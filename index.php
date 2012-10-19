@@ -18,6 +18,21 @@
  * NOTE: If you change these, also change the error_reporting() code below
  *
  */
+	define('APP_NAME', "Office Project Management");
+        define('APP_AUTHOR', "CITSTUDIO");
+        define('APP_DESCRIPTIONS', "CITSTUDIO");
+        define('APP_KEYWORDS', "Project Management System");
+        define('APP_GENERATOR', "CodeIgniter 2.1.2");
+        
+        define('LAYOUT_PATH', "layout/");  /* citstudio_assets/ */
+        define('ASSETS', "assets/");  /* citstudio_assets/ */
+        //define('ASSETS', APP_PREFIX."assets/");  /* citstudio_assets/ */
+        define('ASSETS_CSS', ASSETS."css/");         /* citstudio_assets/css/ */
+        define('ASSETS_JS', ASSETS."js/");           /* citstudio_assets/js/ */
+        define('ASSETS_IMAGES', ASSETS."img/");   /* citstudio_assets/images */
+        define('ASSETS_USERUPLOADED', ASSETS."userfiles/");   /* citstudio_assets/images */
+        
+        
 	define('ENVIRONMENT', 'development');
 /*
  *---------------------------------------------------------------
