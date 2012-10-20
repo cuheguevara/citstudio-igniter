@@ -9,7 +9,18 @@
 	::selection{ background-color: #E13300; color: white; }
 	::moz-selection{ background-color: #E13300; color: white; }
 	::webkit-selection{ background-color: #E13300; color: white; }
-
+        table
+        {
+            padding: 0px;
+            margin: 0px;
+        }
+        th{
+            background-color: #ABC546;
+            font-weight: bold;
+        }
+        td{
+            text-align: center;
+        }
 	body {
 		background-color: #fff;
 		margin: 40px;
@@ -67,18 +78,62 @@
 <body>
 
 <div id="container">
-	<h1>Welcome to CodeIgniter!</h1>
+        <h1>INFO PENERBANGAN </h1>
 
 	<div id="body">
-		<p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
+        <?php //print_r($flight); ?>
+        Data Penerbangan Dari <?php echo $flight['search_queries']['from'] ?> Ke <?php echo $flight['search_queries']['to'].'<br/>' ?>
+        
+        <p><b>INFORMASI BANDARA</b> </p>
+        <table width="50%" >
+            <tr>
+                <td>&nbsp</td>  
+                <th><?php echo $flight['search_queries']['from'] ?></th>  
+                <th><?php echo $flight['search_queries']['to'] ?></th>  
+            </tr>
+            <tr>
+                <th>NAMA BANDARA</th>  
+                <td><?php echo $flight['go_det']['dep_airport']['business_name']; ?></td>
+                <td><?php echo $flight['go_det']['arr_airport']['business_name']; ?></td>
+            </tr>
+            <tr>
+                <th>KOTA, NEGARA</th>
+                <td><?php echo $flight['go_det']['dep_airport']['city_name']; ?>, <?php echo $flight['go_det']['dep_airport']['country_name']; ?></td>
+                <td><?php echo $flight['go_det']['arr_airport']['city_name']; ?>, <?php echo $flight['go_det']['arr_airport']['country_name']; ?></td>
+            </tr>
+            <tr>
+                <th>LOKASI</th>
+                <td><?php echo $flight['go_det']['dep_airport']['location_name']; ?></td>
+                <td><?php echo $flight['go_det']['arr_airport']['location_name']; ?></td>
+            </tr>
+        </table>
+        <br/>
+        <b>JADWAL PENERBANGAN </b>
+        <table width="50%">
+            <tr>
+                <th>MASKAPAI</th>
+                <th>KODE PENERBANGAN</th>
+                <th>JAM </th>
+                <th>JAM TIBA</th>
+                <th>DURASI</th>
+                <th>HARGA</th>
+            </tr>
+        <?php foreach ($flight['departures']['result'] as $r) : ?>
+            <tr>
+                <td><img src="<?php echo $r['image']; ?>" alt="<?php echo $r['airlines_name']; ?>"/></td>
+                <td><?php echo $r['flight_number']; ?></td>
+                <td><?php echo $r['simple_departure_time']; ?></td>
+                <td><?php echo $r['simple_arrival_time']; ?></td>
+                <td><?php echo $r['duration']; ?></td>
+                <td><?php echo $flight['diagnostic']['currency'].' '.$r['price_value']; ?></td>
+            </tr>
+        <?php endforeach; ?>
+                
+        </table>
+        <pre>
+        <?php  print_r($flight); ?>
 
-		<p>If you would like to edit this page you'll find it located at:</p>
-		<code>application/views/welcome_message.php</code>
-
-		<p>The corresponding controller for this page is found at:</p>
-		<code>application/controllers/welcome.php</code>
-
-		<p>If you are exploring CodeIgniter for the very first time, you should start by reading the <a href="user_guide/">User Guide</a>.</p>
+        </pre>
 	</div>
 
 	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds</p>
