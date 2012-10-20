@@ -4,6 +4,6 @@ Dengan menyediakan module HMVC, API dan KS-Library (soon)
 
 Konfigurasi php.ini
 
-extension=php_openssl.dll
-/* masih riskan dengan security allow_url_include */
-allow_url_include = On
+extension=php_openssl.dll \n
+/* masih riskan dengan security allow_url_include */ \n
+allow_url_include = On \n
